@@ -1,0 +1,18 @@
+.row
+  .columns
+    h2 = title("New feedback")
+
+.row
+  .medium-5.columns
+    = simple_form_for @feedback,
+      url: feedbacks_path,
+      html: { method: :post } do |f|
+
+      .form-inputs
+        = f.input :name, required: true, placeholder: "Your Name"
+      .form-inputs
+        = f.input :email, required: true, placeholder: "your@email.com"
+      .form-inputs
+        = f.input :text, required: true, placeholder: "Your feedback"
+      .form-actions
+        = f.button :submit, "Submit feedback"
