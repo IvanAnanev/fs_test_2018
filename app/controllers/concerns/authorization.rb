@@ -9,6 +9,7 @@ module Authorization
   private
 
   def user_not_authorized
+    flash[:alert] = "Not authorized for this path!"
     redirect_to(root_path)
   end
 end

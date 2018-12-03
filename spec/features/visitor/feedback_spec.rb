@@ -31,4 +31,12 @@ feature "Feedback" do
       expect(page).to have_text("Text can't be blank")
     end
   end
+
+  context "can't visit admin feedbacks page" do
+    scenario "Visitor try visit admin feedbacks" do
+      visit admin_feedbacks_path
+
+      expect(page).to have_text("Not authorized for this path!")
+    end
+  end
 end

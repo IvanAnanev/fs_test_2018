@@ -1,0 +1,4 @@
+- if user_signed_in? and policy(:admin).admin?
+  li = link_to "Feedback", admin_feedbacks_path
+- else
+  li = link_to "Feedback", new_feedback_path

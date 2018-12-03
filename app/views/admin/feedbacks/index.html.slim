@@ -1,0 +1,30 @@
+.row
+  .columns
+    h2 = title("Admin feedbacks")
+
+.row
+  / = simple_form_for :search, url: admin_feedbacks_path , :method => :get do |f|
+  /   = f.input :query, :autofocus => true, type: "search"
+  /   = f.submit "Search"
+  = form_tag(admin_feedbacks_path, method: :get)
+    = text_field_tag :search, params[:search]
+    = submit_tag "Search"
+
+.row
+  = paginate @feedbacks
+.row
+  table
+    thead
+      tr
+        th = "name"
+        th = "email"
+        th = "text"
+        th = "created_at"
+    tbody
+      - @feedbacks.each do |fb|
+        tr
+          td = fb.name
+          td = link_to fb.email, admin_feedback_path(fb.id)
+          td = fb.text
+          td = fb.created_at
+
